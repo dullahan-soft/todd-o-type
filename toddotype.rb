@@ -12,7 +12,7 @@ require 'data_mapper'
 	:computer
 ]
 
-if ENV['DATABASE_URL']
+if ENV['HEROKU_POSTGRESQL_GOLD_URL']
   require 'dm-postgres-adapter'
 else
   require 'dm-sqlite-adapter'
