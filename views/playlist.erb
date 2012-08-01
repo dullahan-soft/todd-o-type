@@ -1,0 +1,22 @@
+ <h2>Playlist</h2>
+      <table class="table">
+        <thead>
+          <th>Time</th>
+          <th>Artist</th>
+          <th>Song</th>
+          <th>Album</th>
+          <th>Label</th>
+          <th>Format</th>
+        </thead>
+        <tbody>
+          <% tracks.each do |t| %>
+            <tr><td><%= t.time %></td>
+            <td><%= t.artist %></td>
+            <td><%= t.song %></td>
+            <td><%= t.album %></td>
+            <td><%= t.label %></td>
+            <td><%= t.format %></td></tr>
+          <% end %>
+        </tbody>
+      </table>
+

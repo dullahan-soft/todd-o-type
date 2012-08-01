@@ -1,0 +1,24 @@
+<br/>
+        <h2>Queued Tracks</h2>
+          <table class="table">
+            <thead>
+              <th>Artist</th>
+              <th>Song</th>
+              <th>Album</th>
+              <th>Label</th>
+              <th>On Device</th>
+            </thead>
+            <tbody>
+              <% waiting_tracks.each do |t| %>
+                <tr><td><%= t.artist %></td>
+                <td><%= t.song %></td>
+                <td><%= t.album %></td>
+                <td><%= t.label %></td>
+                <td><%= device_mapping[t.device].to_s.upcase || "Unknown" %></td>
+								<!--<td><a href="#" onclick="return false;">&times;</a></td>-->
+								</tr>
+              <% end %>
+            </tbody>
+          </table>
+          </div>
+
