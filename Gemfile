@@ -4,7 +4,7 @@ gem 'sinatra'
 gem 'datamapper'
 gem 'dm-postgres-adapter'
 
-group :development do
+group :test do
 	gem 'pry'
 	gem 'dm-sqlite-adapter'
 end
