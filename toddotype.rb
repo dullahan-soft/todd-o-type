@@ -20,7 +20,7 @@ else
 end
 
 configure do 
-	DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3:///#{Dir.pwd}/db/test.db")
+	DataMapper.setup(:default, ENV['HEROKU_POSTGRESQL_GOLD_URL'] || "sqlite3:///#{Dir.pwd}/db/test.db")
 	class Track
 		include DataMapper::Resource
 		property :id, Serial
