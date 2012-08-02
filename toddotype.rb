@@ -58,7 +58,16 @@ end
 
 post '/stations/:station' do |station|
 	if params[:key] == @@the_key
-	
+		t = Tracks.first(:played => false, :device => params[:device])	
+		if not t.nil?
+			t.played = true
+			t.played_at = DateTime.parse(params[:timestamp])
+			t.format = @@device_mapping[params[:device]]
+			t.save
+			{:error => 0, :msg => 'Success.' }.to_json
+		else
+			{:error => 2, :msg => 'Bad post data.'}.to_json
+		end
 	else
 		{:error => 1, :msg => 'Bad key.'}.to_json
 	end
