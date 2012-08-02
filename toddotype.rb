@@ -58,7 +58,7 @@ end
 
 post '/stations/:station' do |station|
 	if params[:key] == @@the_key
-		t = Tracks.first(:played => false, :device => params[:device])	
+		t = Track.first(:played => false, :device => params[:device])	
 		if not t.nil?
 			t.played = true
 			t.played_at = DateTime.parse(params[:timestamp])
