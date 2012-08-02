@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css"/>
@@ -77,17 +78,16 @@
 		<hr/>
 		<div class="well" id="enqueue">
 			<form id="q-form" class="form-inline" method="POST" action="/q">
-				<input type="text" span="3" placeholder="Artist" name="artist" id="artist-input"></input>
-				<input type="text" span="3" placeholder="Song" name="song" id="song-input"></input>
-				<input type="text" span="3" placeholder="Album" name="album" id="album-input"></input>
-				<input type="text" span="3" placeholder="Label" name="label" id="label-input"></input>
+				<input type="text" class="span2" placeholder="Artist" name="artist" id="artist-input">
+				<input type="text" placeholder="Song" name="song" id="song-input">
+				<input type="text" placeholder="Album" name="album" id="album-input">
+				<input type="text" placeholder="Label" name="label" id="label-input">
 				<div class="input-append">
 					<select name="device">
 						<% device_mapping.each_with_index do |m,i| %>
 							<option value="<%= i %>"><%= m.upcase %></option>
 						<% end %>
-					</select>
-					<button class="btn" type="submit" onclick="enqueue();return false;"><i class="icon-music"></i> Cue</button>
+					</select><button class="btn" type="submit" onclick="enqueue();return false;"><i class="icon-music"></i> Cue</button>
 				</div>
 				
 				<div id="pool">

@@ -52,8 +52,12 @@ get '/queued' do
 end
 
 post '/q' do
-	Track.new(:artist => params['artist'], :song => params['song'], :album => params['album'],
-					  :label => params['label'], :device => params['device'].to_i, :created_at => DateTime.now).save
+	if Track.first(:played=>false, :device=>params['device'].to_i).nil?
+		Track.new(:artist => params['artist'], :song => params['song'], :album => params['album'],
+						  :label => params['label'], :device => params['device'].to_i, :created_at => DateTime.now).save
+	else
+		"A track is already cued on #{@@device_mapping[params['device'].to_i].upcase}."
+	end
 end
 
 post '/unq' do

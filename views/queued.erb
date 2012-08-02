@@ -7,6 +7,7 @@
               <th>Album</th>
               <th>Label</th>
               <th>On Device</th>
+							<th></th>
             </thead>
             <tbody>
               <% waiting_tracks.each do |t| %>
@@ -14,14 +15,12 @@
                 <td><%= t.song %></td>
                 <td><%= t.album %></td>
                 <td><%= t.label %></td>
-                <td><%= device_mapping[t.device].to_s.upcase || "Unknown" %>
+                <td>
+								<%= device_mapping[t.device].to_s.upcase || "Unknown" %>
+								</td>
+								<td>
 									<div class="btn-group pull-right">
-									<a href="#" class="btn" onclick="playTrack(<%= t.device %>);$(this).parent().parent().parent().hide();return false;">
-										<i class="icon-play"></i> Play
-									</a>
-								  <a href="#" class="btn" onclick="removeTrack(<%= t.device %>);$(this).parent().parent().parent().hide();return false;">
-										<i class="icon-remove"></i> Remove
-									</a>
+									<a href="#" class="btn" onclick="playTrack(<%= t.device %>);$(this).parent().parent().parent().hide();return false;"><i class="icon-play"></i> Play</a><a href="#" class="btn" onclick="removeTrack(<%= t.device %>);$(this).parent().parent().parent().hide();return false;"><i class="icon-remove"></i> Remove</a>
 									</div>
 								</td>
 								</tr>
