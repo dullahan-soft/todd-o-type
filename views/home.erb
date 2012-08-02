@@ -97,6 +97,9 @@
 				$.get('/playlist', function(data){
 					$('#playlist').html(data);
 				});
+				$.get('/queued', function(data){
+					$('#pool').html(data);
+				});
 			},3000);
 		</script>
 	</body>
