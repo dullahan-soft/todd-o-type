@@ -62,7 +62,7 @@ post '/stations/:station' do |station|
 		if not t.nil?
 			t.played = true
 			t.played_at = DateTime.now
-			d = @@device_mapping[params[:device].to_i].upcase
+			d = @@device_mapping[params[:device].to_i].to_s.upcase
 			if d.include? "CD"
 				t.format = "CD"
 			elsif d.include? "TAPE"
