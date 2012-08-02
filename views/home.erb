@@ -23,6 +23,13 @@
 					document.location.reload(true);					
 				});
 			}
+			function playTrack(id){
+   	 		$.post('/stations/kdvs','key=9wk3u5d&timestamp=null&device='+id,function(data){
+   	   		$.get('/playlist', function(data){
+   	     		$('#playlist').html(data);
+   	   		});
+  	 		});
+	 	 	}
 		</script>
 	</head>
 	<body class="container">
