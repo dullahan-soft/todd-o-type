@@ -61,8 +61,8 @@ post '/stations/:station' do |station|
 		t = Track.first(:played => false, :device => params[:device])	
 		if not t.nil?
 			t.played = true
-			t.played_at = DateTime.parse(params[:timestamp])
-			t.format = @@device_mapping[params[:device]]
+			t.played_at = DateTime.now
+			t.format = @@device_mapping[params[:device].to_i]
 			t.save
 			{:error => 0, :msg => 'Success.' }.to_json
 		else
