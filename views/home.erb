@@ -1,10 +1,11 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/css/bootstrap-combined.min.css"/>
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all" /> 
 		<link rel="stylesheet" href="/css/docs.css"/>
 
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
 		<script type="text/javascript">
 			function enqueue(){
 				$.post('/q', $('#q-form').serialize(), function(data){	
@@ -28,6 +29,16 @@
    	   		$.get('/playlist', function(data){
    	     		$('#playlist').html(data);
    	   		});
+  	 		});
+	 	 	}
+			function removeTrack(id){
+   	 		$.post('/unq','device='+id,function(data){
+   	   		$.get('/playlist', function(data){
+   	     		$('#playlist').html(data);
+   	   		});
+					$.get('/queued', function(data){
+						$('#pool').html(data);
+					});
   	 		});
 	 	 	}
 		</script>
@@ -76,7 +87,7 @@
 							<option value="<%= i %>"><%= m.upcase %></option>
 						<% end %>
 					</select>
-					<button class="btn" type="submit" onclick="enqueue();return false;"><i class="icon-music"></i> Queue</button>
+					<button class="btn" type="submit" onclick="enqueue();return false;"><i class="icon-music"></i> Cue</button>
 				</div>
 				
 				<div id="pool">

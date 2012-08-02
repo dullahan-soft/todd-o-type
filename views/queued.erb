@@ -14,12 +14,16 @@
                 <td><%= t.song %></td>
                 <td><%= t.album %></td>
                 <td><%= t.label %></td>
-                <td><%= device_mapping[t.device].to_s.upcase || "Unknown" %></td>
-								<!-- key shouldn't be here, we would normally assume the user had already been authed-->
-								<td>
-									<a href="#" class="btn" onclick="playTrack(<%= t.device %>);$(this).parent().parent().hide();return false;"><i class="icon-play"></i> Play</a>
+                <td><%= device_mapping[t.device].to_s.upcase || "Unknown" %>
+									<div class="btn-group pull-right">
+									<a href="#" class="btn" onclick="playTrack(<%= t.device %>);$(this).parent().parent().parent().hide();return false;">
+										<i class="icon-play"></i> Play
+									</a>
+								  <a href="#" class="btn" onclick="removeTrack(<%= t.device %>);$(this).parent().parent().parent().hide();return false;">
+										<i class="icon-remove"></i> Remove
+									</a>
+									</div>
 								</td>
-								<!--<td><a href="#" onclick="return false;">&times;</a></td>-->
 								</tr>
               <% end %>
             </tbody>

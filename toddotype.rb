@@ -56,6 +56,10 @@ post '/q' do
 					  :label => params['label'], :device => params['device'].to_i, :created_at => DateTime.now).save
 end
 
+post '/unq' do
+	Track.first(:played=>false, :device => params['device']).destroy
+end
+
 post '/stations/:station' do |station|
 	if params[:key] == @@the_key
 		t = Track.first(:played => false, :device => params[:device])	
