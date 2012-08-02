@@ -62,7 +62,16 @@ post '/stations/:station' do |station|
 		if not t.nil?
 			t.played = true
 			t.played_at = DateTime.now
-			t.format = @@device_mapping[params[:device].to_i]
+			d = @@device_mapping[params[:device].to_i].upcase
+			if d.include? "CD"
+				t.format = "CD"
+			elsif d.include? "TAPE"
+				t.format = "Tape cassette"
+			elsif d.include? "TURN"
+				t.format = "Vinyl"
+			elsif d.include? "COMPUTER"
+				t.format = "Computer"
+			end
 			t.save
 			{:error => 0, :msg => 'Success.' }.to_json
 		else
