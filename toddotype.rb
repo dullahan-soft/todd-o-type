@@ -44,7 +44,7 @@ get '/' do
 end
 
 get '/playlist' do
-	erb :playlist, :locals => {:tracks => Track.all(:played => true) }
+	erb :playlist, :locals => {:tracks => Track.all(:played => true, :order => [:played_at.asc]) }
 end
 
 get '/queued' do

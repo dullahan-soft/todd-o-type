@@ -93,6 +93,11 @@
 					$('#pool').html(data);
 				});
 			});
+			setInterval(function(){
+				$.get('/playlist', function(data){
+					$('#playlist').html(data);
+				});
+			},3000);
 		</script>
 	</body>
 </html>
